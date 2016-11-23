@@ -10,7 +10,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: [
-    './src/hello.jsx',
+    './src/index.jsx',
   ],
   output: {
     path: `${__dirname}/dist`,
