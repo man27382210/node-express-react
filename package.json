@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "browserify src/hello.jsx -o bundle.js -t babelify && node index.js",
+    "start": "browserify src/index.jsx --extension=.jsx -o bundle.js -t babelify && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "dev": "webpack-dev-server -d --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch"
