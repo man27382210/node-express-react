@@ -35,7 +35,7 @@
     "id-length": 0,
     "no-return-assign": 0,
     "no-unused-expressions": 0,
-    jsx-quotes: ["error", "prefer-single"],
+    "jsx-quotes": ["error", "prefer-single"],
     "linebreak-style": [0, "unix"]
   },
   "plugins": [
