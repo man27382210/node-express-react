@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "browserify src/index.jsx --extension=.jsx -o bundle.js -t babelify && node index.js",
-    "test": "mocha --compilers js:babel-register --require test/setup.js",
+    "test": "mocha --compilers js:babel-register --require test/utils/setup.js",
     "lint": "eslint .",
     "dev": "webpack-dev-server -d --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch",
     "gitUser": "git config user.name 'Rebecca' && git config user.email 'joanna8030@gmail.com'"
