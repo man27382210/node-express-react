@@ -3,14 +3,25 @@ import ReactDOM from 'react-dom';
 import { Button } from 'react-bootstrap';
 import TrackingTable from './table';
 import issues from './constant';
+import ModalDialog from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      issues: issues
+      issues: issues,
+      showModal: false,
+      title: 'New Issue'
     };
     this.handleDropRow = this.handleDropRow.bind(this);
+    this.handleShowModal = this.handleShowModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+  handleShowModal(title, issue) {
+    this.setState({ title, showModal: true });
+  }
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
   handleDropRow(seq) {
     const issues = this.state.issues.filter(issue => issue.seq !== seq);
@@ -19,8 +30,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Button>New</Button>
-        <TrackingTable issues={this.state.issues} onDropRow={this.handleDropRow} />
+        <Button onClick={() => this.handleShowModal('New Issue', {})}>New</Button>
+        <TrackingTable issues={this.state.issues} showModal={this.handleShowModal} onDropRow={this.handleDropRow} />
+        <ModalDialog show={this.state.showModal} onHide={this.handleCloseModal} title={this.state.title} issues={this.state.issues}/>
       </div>
     );
   }

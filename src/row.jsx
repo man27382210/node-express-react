@@ -19,7 +19,7 @@ export default class IssueRow extends React.Component {
         <td>{this.props.owner}</td>
         <td>{this.props.priority}</td>
         <td>
-          <Button>Edit</Button>
+          <Button onClick={() => this.props.showModal('Update', this.props.seq)}>Edit</Button>
           <Button onClick={this.handleDropRow}>Delete</Button>
         </td>
       </tr>
