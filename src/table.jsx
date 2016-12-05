@@ -3,6 +3,13 @@ import { Table, tbody } from 'react-bootstrap';
 import IssueRow from './row';
 
 export default class TrackingTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleDropRow = this.handleDropRow.bind(this);
+  }
+  handleDropRow(seq) {
+    this.props.onDropRow(seq);
+  }
   render() {
     var issues = this.props.issues.map(issue => (
       <IssueRow
@@ -13,6 +20,7 @@ export default class TrackingTable extends React.Component {
         title={issue.title}
         owner={issue.owner}
         priority={issue.priority}
+        onDropRow={this.handleDropRow}
       />
   ));
     return (
@@ -26,6 +34,7 @@ export default class TrackingTable extends React.Component {
               <th>Title</th>
               <th>Owner</th>
               <th>Priority</th>
+              <th>Operation</th>
             </tr>
           </thead>
           <tbody>
@@ -38,5 +47,6 @@ export default class TrackingTable extends React.Component {
 }
 
 TrackingTable.propTypes = {
-  issues: React.PropTypes.arrayOf(React.PropTypes.object)
+  issues: React.PropTypes.arrayOf(React.PropTypes.object),
+  onDropRow: React.PropTypes.func
 };
