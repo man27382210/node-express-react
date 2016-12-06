@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'react-bootstrap';
 import TrackingTable from './table';
-import issues from './constant';
+import issueList from './constant';
 import ModalDialog from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      issues: issues,
+      issues: issueList,
       showModal: false,
       title: 'New Issue',
       issue: {}

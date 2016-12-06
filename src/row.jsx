@@ -9,6 +9,11 @@ export default class IssueRow extends React.Component {
   handleDropRow() {
     this.props.onDropRow(this.props.issue.seq);
   }
+
+  handleEditBtnClick() {
+    this.props.showModal('Update', { ...this.props.issue });
+  }
+
   render() {
     const color = (this.props.issue.isUpdate === true) ? '#f1f442' : '';
     return (
@@ -20,7 +25,7 @@ export default class IssueRow extends React.Component {
         <td>{this.props.issue.owner}</td>
         <td>{this.props.issue.priority}</td>
         <td>
-          <Button onClick={() => this.props.showModal('Update', this.props.issue)}>Edit</Button>
+          <Button onClick={() => this.handleEditBtnClick()}>Edit</Button>
           <Button onClick={this.handleDropRow}>Delete</Button>
         </td>
       </tr>
