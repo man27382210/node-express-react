@@ -10,8 +10,9 @@ export default class IssueRow extends React.Component {
     this.props.onDropRow(this.props.issue.seq);
   }
   render() {
+    const color = (this.props.issue.isUpdate === true) ? '#f1f442' : '';
     return (
-      <tr>
+      <tr style={{ backgroundColor: color }}>
         <td>{this.props.issue.seq}</td>
         <td>{this.props.issue.status}</td>
         <td>{this.props.issue.category}</td>
@@ -35,7 +36,7 @@ IssueRow.propTypes = {
     title: React.PropTypes.string,
     owner: React.PropTypes.string,
     priority: React.PropTypes.string,
-    onDropRow: React.PropTypes.func
+    isUpdate: React.PropTypes.bool
   }),
   onDropRow: React.PropTypes.func,
   showModal: React.PropTypes.func

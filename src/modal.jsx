@@ -28,7 +28,8 @@ export default class ModalDialog extends React.Component {
       category: this.categoryInput.value,
       title: this.titleInput.value,
       owner: this.ownerInput.value,
-      priority: this.priorityInput.value
+      priority: this.priorityInput.value,
+      isUpdate: false
     };
     this.props.onAddRow(issue);
     this.props.onHide();
@@ -40,7 +41,8 @@ export default class ModalDialog extends React.Component {
       category: this.categoryInput.value,
       title: this.titleInput.value,
       owner: this.ownerInput.value,
-      priority: this.priorityInput.value
+      priority: this.priorityInput.value,
+      isUpdate: true
     };
     this.props.onUpdateRow(issue);
     this.props.onHide();
@@ -85,6 +87,5 @@ ModalDialog.propTypes = {
   onHide: React.PropTypes.func,
   onUpdateRow: React.PropTypes.func,
   title: React.PropTypes.string,
-  show: React.PropTypes.func,
-
+  show: React.PropTypes.bool
 };

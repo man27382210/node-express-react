@@ -24,7 +24,6 @@ export default class App extends React.Component {
     this.setState({ showModal: true, title, issue });
   }
   handleCloseModal() {
-    console.log(this.state.issues)
     this.setState({ showModal: false });
   }
   handleDropRow(seq) {
