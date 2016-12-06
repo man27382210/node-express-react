@@ -16,7 +16,6 @@ export default class TrackingTable extends React.Component {
       />
   ));
     return (
-      <div>
         <Table responsive striped bordered condensed hover>
           <thead>
             <tr>
@@ -32,7 +31,6 @@ export default class TrackingTable extends React.Component {
             {issues}
           </tbody>
         </Table>
-      </div>
     );
   }
 }
