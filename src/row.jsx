@@ -7,19 +7,19 @@ export default class IssueRow extends React.Component {
     this.handleDropRow = this.handleDropRow.bind(this);
   }
   handleDropRow() {
-    this.props.onDropRow(this.props.seq);
+    this.props.onDropRow(this.props.issue.seq);
   }
   render() {
     return (
       <tr>
-        <td>{this.props.seq}</td>
-        <td>{this.props.status}</td>
-        <td>{this.props.category}</td>
-        <td>{this.props.title}</td>
-        <td>{this.props.owner}</td>
-        <td>{this.props.priority}</td>
+        <td>{this.props.issue.seq}</td>
+        <td>{this.props.issue.status}</td>
+        <td>{this.props.issue.category}</td>
+        <td>{this.props.issue.title}</td>
+        <td>{this.props.issue.owner}</td>
+        <td>{this.props.issue.priority}</td>
         <td>
-          <Button onClick={() => this.props.showModal('Update', this.props.seq)}>Edit</Button>
+          <Button onClick={() => this.props.showModal('Update', this.props.issue)}>Edit</Button>
           <Button onClick={this.handleDropRow}>Delete</Button>
         </td>
       </tr>
@@ -28,11 +28,15 @@ export default class IssueRow extends React.Component {
 }
 
 IssueRow.propTypes = {
-  seq: React.PropTypes.number,
-  status: React.PropTypes.string,
-  category: React.PropTypes.string,
-  title: React.PropTypes.string,
-  owner: React.PropTypes.string,
-  priority: React.PropTypes.string,
-  onDropRow: React.PropTypes.func
+  issue: React.PropTypes.shape({
+    seq: React.PropTypes.number,
+    status: React.PropTypes.string,
+    category: React.PropTypes.string,
+    title: React.PropTypes.string,
+    owner: React.PropTypes.string,
+    priority: React.PropTypes.string,
+    onDropRow: React.PropTypes.func
+  }),
+  onDropRow: React.PropTypes.func,
+  showModal: React.PropTypes.func
 };

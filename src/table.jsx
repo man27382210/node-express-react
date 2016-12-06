@@ -18,12 +18,7 @@ export default class TrackingTable extends React.Component {
     var issues = this.props.issues.map(issue => (
       <IssueRow
         key={issue.seq}
-        seq={issue.seq}
-        status={issue.status}
-        category={issue.category}
-        title={issue.title}
-        owner={issue.owner}
-        priority={issue.priority}
+        issue={issue}
         showModal={this.showModal}
         onDropRow={this.handleDropRow}
       />
@@ -53,5 +48,6 @@ export default class TrackingTable extends React.Component {
 
 TrackingTable.propTypes = {
   issues: React.PropTypes.arrayOf(React.PropTypes.object),
-  onDropRow: React.PropTypes.func
+  onDropRow: React.PropTypes.func,
+  showModal: React.PropTypes.func
 };
