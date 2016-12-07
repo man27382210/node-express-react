@@ -23,7 +23,7 @@ export default class ModalDialog extends React.Component {
   }
   handleAddRow() {
     const issue = {
-      seq: (this.props.issues[Object.keys(this.props.issues).length - 1].seq + 1),
+      seq: this.props.issue.seq,
       status: this.statusInput.value,
       category: this.categoryInput.value,
       title: this.titleInput.value,
@@ -48,7 +48,6 @@ export default class ModalDialog extends React.Component {
     this.props.onHide();
   }
   render() {
-    const seq = (this.props.title === 'New Issue') ? (this.props.issues[Object.keys(this.props.issues).length - 1].seq + 1) : this.state.issue.seq;
     const operation = (this.props.title === 'New Issue') ? this.handleAddRow : this.handleUpdateRow;
     return (
       <Modal show={this.props.show} onHide={this.props.onHide} bsSize='large'>
@@ -57,7 +56,7 @@ export default class ModalDialog extends React.Component {
         </Modal.Header>
         <form>
           <Modal.Body>
-            seq: {seq} <br /><br />
+            seq: {this.props.issue.seq} <br /><br />
             Status: <input type='text' name='status' value={this.state.issue.status} ref={input => this.statusInput = input} onChange={this.handleChange} /><br /><br />
             Category: <input type='text' name='category' value={this.state.issue.category} ref={input => this.categoryInput = input} onChange={this.handleChange} /><br /><br />
             Title: <input type='text' name='title' value={this.state.issue.title} ref={input => this.titleInput = input} onChange={this.handleChange} /><br /><br />
@@ -73,7 +72,6 @@ export default class ModalDialog extends React.Component {
   }
 }
 ModalDialog.propTypes = {
-  issues: React.PropTypes.arrayOf(React.PropTypes.object),
   issue: React.PropTypes.shape({
     seq: React.PropTypes.number,
     status: React.PropTypes.string,
