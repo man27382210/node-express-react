@@ -31,8 +31,9 @@ export default class App extends React.Component {
     this.setState({ issues });
   }
   handleAddRow(issue) {
+    const nextSeq = this.state.issues[Object.keys(this.state.issues).length - 1].seq + 1;
     const issues = this.state.issues;
-    issues.push(issue);
+    issues.push({ ...issue, seq: nextSeq });
     this.setState({ issues, showModal: false });
   }
   handleUpdateRow(updateIssue) {
@@ -46,10 +47,9 @@ export default class App extends React.Component {
     this.setState({ issues, showModal: false });
   }
   render() {
-    const nextSeq = this.state.issues[Object.keys(this.state.issues).length - 1].seq + 1;
     return (
       <div>
-        <Button onClick={() => this.handleShowModal('New Issue', { seq: nextSeq })}>New</Button>
+        <Button onClick={() => this.handleShowModal('New Issue', {})}>New</Button>
         <TrackingTable issues={this.state.issues} showModal={this.handleShowModal} onDropRow={this.handleDropRow} />
         <ModalDialog
           show={this.state.showModal}
