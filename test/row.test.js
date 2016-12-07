@@ -35,6 +35,7 @@ describe('row.jsx', () => {
 
   it('should show data correctly', () => {
     const dom = ReactDOM.findDOMNode(component);
+    expect(dom).to.exist;
     expect(dom.childNodes[0].textContent).to.be.equal(issue.seq.toString());
     expect(dom.childNodes[1].textContent).to.be.equal(issue.status);
     expect(dom.childNodes[2].textContent).to.be.equal(issue.category);

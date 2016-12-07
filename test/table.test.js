@@ -20,14 +20,21 @@ describe('table.jsx', () => {
     const dom = ReactDOM.findDOMNode(component);
     expect(dom).to.exist;
     expect(dom.childNodes[0].tagName).to.be.equal('TABLE');
-    expect(dom.childNodes[0].className).to.be.equal('table table-striped table-bordered table-condensed table-hover');
-    // if bootstrap table has class responsive, then there's a div tag wrap outside of the table
+    expect(dom.childNodes[0].className).to.match(/\btable\b/);
+    expect(dom.childNodes[0].className).to.match(/\btable-striped\b/);
+    expect(dom.childNodes[0].className).to.match(/\btable-bordered\b/);
+    expect(dom.childNodes[0].className).to.match(/\btable-condensed\b/);
+    expect(dom.childNodes[0].className).to.match(/\btable-hover\b/);
+    expect(dom.className).to.match(/\btable-responsive\b/);
+    // if bootstrap table has class responsive, there's a div tag wrap outside of the table
 
     const tHeadTag = dom.childNodes[0].childNodes[0];
+    expect(tHeadTag).to.exist;
     expect(tHeadTag.tagName).to.be.equal('THEAD');
-    expect(tHeadTag.childNodes[0].childNodes.length).to.be.equal(6);
+    expect(tHeadTag.childNodes[0].childNodes.length).to.be.equal(Object.keys(issues[0]).length);
 
     const tBodyTag = dom.childNodes[0].childNodes[1];
-    expect(tBodyTag.childNodes.length).to.be.equal(5);
+    expect(tBodyTag).to.exist;
+    expect(tBodyTag.childNodes.length).to.be.equal(Object.keys(issues).length);
   });
 });
