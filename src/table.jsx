@@ -16,21 +16,21 @@ export default class TrackingTable extends React.Component {
       />
   ));
     return (
-        <Table responsive striped bordered condensed hover>
-          <thead>
-            <tr>
-              <th>seq</th>
-              <th>Status</th>
-              <th>Category</th>
-              <th>Title</th>
-              <th>Owner</th>
-              <th>Priority</th>
-            </tr>
-          </thead>
-          <tbody>
-            {issues}
-          </tbody>
-        </Table>
+      <Table responsive striped bordered condensed hover>
+        <thead>
+          <tr>
+            <th>seq</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Owner</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          {issues}
+        </tbody>
+      </Table>
     );
   }
 }
