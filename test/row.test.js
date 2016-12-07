@@ -30,7 +30,10 @@ describe('row.jsx', () => {
     const dom = ReactDOM.findDOMNode(component);
     expect(dom).to.exist;
     expect(dom.tagName).to.be.equal('TR');
-    expect(ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'td').length).to.be.equal(Object.keys(issue).length);
+
+    const tdList = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'td');
+    expect(tdList).to.exist;
+    expect(tdList.length).to.be.equal(Object.keys(issue).length);
   });
 
   it('should show data correctly', () => {
