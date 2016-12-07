@@ -33,7 +33,7 @@ export default class App extends React.Component {
   handleAddRow(issue) {
     const issues = this.state.issues;
     issues.push(issue);
-    this.setState({ issues });
+    this.setState({ issues, showModal: false });
   }
   handleUpdateRow(updateIssue) {
     const issues = this.state.issues.map((issue) => {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
       }
       return _issue;
     });
-    this.setState({ issues });
+    this.setState({ issues, showModal: false });
   }
   render() {
     const nextSeq = this.state.issues[Object.keys(this.state.issues).length - 1].seq + 1;

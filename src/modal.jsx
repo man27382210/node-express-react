@@ -32,7 +32,6 @@ export default class ModalDialog extends React.Component {
       isUpdate: false
     };
     this.props.onAddRow(issue);
-    this.props.onHide();
   }
   handleUpdateRow() {
     const issue = {
@@ -45,7 +44,6 @@ export default class ModalDialog extends React.Component {
       isUpdate: true
     };
     this.props.onUpdateRow(issue);
-    this.props.onHide();
   }
   render() {
     const operation = (this.props.title === 'New Issue') ? this.handleAddRow : this.handleUpdateRow;
