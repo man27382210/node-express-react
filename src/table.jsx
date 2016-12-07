@@ -22,26 +22,24 @@ export default class TrackingTable extends React.Component {
         showModal={this.showModal}
         onDropRow={this.handleDropRow}
       />
-  ));
+    ));
     return (
-      <div>
-        <Table responsive striped bordered condensed hover>
-          <thead>
-            <tr>
-              <th>seq</th>
-              <th>Status</th>
-              <th>Category</th>
-              <th>Title</th>
-              <th>Owner</th>
-              <th>Priority</th>
-              <th>Operation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {issues}
-          </tbody>
-        </Table>
-      </div>
+      <Table responsive striped bordered condensed hover>
+        <thead>
+          <tr>
+            <th>seq</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Owner</th>
+            <th>Priority</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {issues}
+        </tbody>
+      </Table>
     );
   }
 }
