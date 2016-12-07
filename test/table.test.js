@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+/* eslint react/jsx-filename-extension:0, react/no-find-dom-node:0 */
 import chai from 'chai';
 import ReactTestUtils from 'react-addons-test-utils';
 import React from 'react';
@@ -19,7 +21,7 @@ describe('table.jsx', () => {
     expect(dom).to.exist;
     expect(dom.childNodes[0].tagName).to.be.equal('TABLE');
     expect(dom.childNodes[0].className).to.be.equal('table table-striped table-bordered table-condensed table-hover');
-    //if bootstrap table has class responsive, then there's a div tag wrap outside of the table
+    // if bootstrap table has class responsive, then there's a div tag wrap outside of the table
 
     const tHeadTag = dom.childNodes[0].childNodes[0];
     expect(tHeadTag.tagName).to.be.equal('THEAD');
