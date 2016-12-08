@@ -3,6 +3,7 @@
 import chai from 'chai';
 import ReactTestUtils from 'react-addons-test-utils';
 import React from 'react';
+import sinon from 'sinon';
 import ReactDOM from 'react-dom';
 import IssueRow from '../src/row';
 
@@ -11,12 +12,16 @@ const expect = chai.expect;
 describe('row.jsx', () => {
   var component;
   var issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1', isUpdate: false };
+  var showModalSpy = sinon.spy();
+  var handleDropRowSpy = sinon.spy();
 
   beforeEach(() => {
     component = ReactTestUtils.renderIntoDocument(
       <IssueRow
         key={issue.seq}
         issue={issue}
+        showModal={showModalSpy}
+        onDropRow={handleDropRowSpy}
       />
     );
   });
@@ -60,6 +65,22 @@ describe('row.jsx', () => {
     const testDom = ReactDOM.findDOMNode(testComponent);
     expect(testDom).to.exist;
     expect(testDom.style.backgroundColor).to.be.equal('rgb(241, 244, 66)');
+  });
+
+  it('should call showModal when click edit', () => {
+    const buttons = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'BUTTON');
+    expect(buttons).to.exist;
+    const editButton = buttons[0];
+    ReactTestUtils.Simulate.click(editButton);
+    expect(showModalSpy.calledOnce).to.be.true;
+  });
+
+  it('should call handleDropRow when click delete', () => {
+    const buttons = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'BUTTON');
+    expect(buttons).to.exist;
+    const deleteButton = buttons[1];
+    ReactTestUtils.Simulate.click(deleteButton);
+    expect(handleDropRowSpy.calledOnce).to.be.true;
   });
 
 });
