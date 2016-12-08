@@ -9,7 +9,7 @@ import App from '../src/index';
 const expect = chai.expect;
 
 describe('index.jsx', () => {
-  var component;
+  let component;
 
   beforeEach(() => {
     component = ReactTestUtils.renderIntoDocument(

@@ -10,7 +10,7 @@ import issues from '../src/constant';
 const expect = chai.expect;
 
 describe('table.jsx', () => {
-  var component;
+  let component;
 
   beforeEach(() => {
     component = ReactTestUtils.renderIntoDocument(<TrackingTable issues={issues} />);

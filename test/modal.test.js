@@ -9,13 +9,13 @@ import ModalDialog from '../src/modal';
 const expect = chai.expect;
 
 describe('modal.jsx', () => {
-  var onHideSpy = sinon.spy();
-  var handleAddRowSpy = sinon.spy();
-  var handleUpdateRowSpy = sinon.spy();
+  const onHideSpy = sinon.spy();
+  const handleAddRowSpy = sinon.spy();
+  const handleUpdateRowSpy = sinon.spy();
 
   describe('modal with insert new issue event', () => {
-    var title = 'New Issue';
-    var issue = {};
+    const title = 'New Issue';
+    const issue = {};
 
     beforeEach(() => {
       ReactTestUtils.renderIntoDocument(
@@ -78,8 +78,8 @@ describe('modal.jsx', () => {
   });
 
   describe('modal with update issue event', () => {
-    var title = 'Update';
-    var issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1', isUpdate: false };
+    const title = 'Update';
+    const issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1', isUpdate: false };
 
     beforeEach(() => {
       ReactTestUtils.renderIntoDocument(

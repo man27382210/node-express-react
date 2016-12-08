@@ -10,10 +10,10 @@ import IssueRow from '../src/row';
 const expect = chai.expect;
 
 describe('row.jsx', () => {
-  var component;
-  var issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1', isUpdate: false };
-  var showModalSpy = sinon.spy();
-  var handleDropRowSpy = sinon.spy();
+  let component;
+  const issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1', isUpdate: false };
+  const showModalSpy = sinon.spy();
+  const handleDropRowSpy = sinon.spy();
 
   beforeEach(() => {
     component = ReactTestUtils.renderIntoDocument(
