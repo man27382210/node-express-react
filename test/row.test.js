@@ -10,18 +10,13 @@ const expect = chai.expect;
 
 describe('row.jsx', () => {
   var component;
-  var issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1' };
+  var issue = { seq: 1, status: 'Open', category: 'cat1', title: 'title1', owner: 'Allen', priority: 'P1', isUpdate: false };
 
   beforeEach(() => {
     component = ReactTestUtils.renderIntoDocument(
       <IssueRow
         key={issue.seq}
-        seq={issue.seq}
-        status={issue.status}
-        category={issue.category}
-        title={issue.title}
-        owner={issue.owner}
-        priority={issue.priority}
+        issue={issue}
       />
     );
   });
@@ -34,6 +29,12 @@ describe('row.jsx', () => {
     const tdList = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'td');
     expect(tdList).to.exist;
     expect(tdList.length).to.be.equal(Object.keys(issue).length);
+
+    const buttons = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'BUTTON');
+    expect(buttons).to.exist;
+    expect(buttons.length).to.be.equal(2);
+    expect(buttons[0].textContent).to.be.equal('Edit');
+    expect(buttons[1].textContent).to.be.equal('Delete');
   });
 
   it('should show data correctly', () => {
@@ -46,4 +47,19 @@ describe('row.jsx', () => {
     expect(dom.childNodes[4].textContent).to.be.equal(issue.owner);
     expect(dom.childNodes[5].textContent).to.be.equal(issue.priority);
   });
+
+  it('should change backgroundColor if is updated', () => {
+    const dom = ReactDOM.findDOMNode(component);
+    expect(dom).to.exist;
+    expect(dom.style[0]).to.be.equal(undefined);
+
+    const mockData = { ...issue, isUpdate: true };
+    const testComponent = ReactTestUtils.renderIntoDocument(
+      <IssueRow key={issue.seq} issue={mockData} />
+    );
+    const testDom = ReactDOM.findDOMNode(testComponent);
+    expect(testDom).to.exist;
+    expect(testDom.style.backgroundColor).to.be.equal('rgb(241, 244, 66)');
+  });
+
 });
