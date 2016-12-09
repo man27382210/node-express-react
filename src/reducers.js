@@ -1,10 +1,11 @@
+/* eslint no-confusing-arrow: 0 */
 import { combineReducers } from 'redux';
 import issueList from './constants/constant';
 import * as types from './constants/actionTypes';
 
-const initialState = { issues: issueList };
+const initialData = { issues: issueList };
 
-const operation = (state = initialState, action) => {
+const operation = (state = initialData, action) => {
   switch (action.type) {
     case types.DeleteRow:
       return {
@@ -33,7 +34,9 @@ const operation = (state = initialState, action) => {
   }
 };
 
-const modalControl = (state = { showModal: false, title: 'New Issue', issue: {} }, action) => {
+const initialState = { showModal: false, title: 'New Issue', issue: {} };
+
+const modalControl = (state = initialState, action) => {
   switch (action.type) {
     case types.ShowModal:
       return { ...state, showModal: true, title: action.title, issue: action.issue };
