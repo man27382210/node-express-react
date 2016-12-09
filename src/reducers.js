@@ -15,6 +15,11 @@ const operation = (state = initialState, action) => {
           { ...action.issue, seq: Object.keys(state.issues).length + 1 }
         ]
       };
+    case types.UpdateRow:
+      return { ...state,
+        issues: state.issues.map(issue =>
+          issue.seq === action.issue.seq ?
+            action.issue : issue) };
     default:
       return state;
   }

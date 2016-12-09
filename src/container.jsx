@@ -18,23 +18,12 @@ class App extends React.Component {
     };
     this.handleShowModal = this.handleShowModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleUpdateRow = this.handleUpdateRow.bind(this);
   }
   handleShowModal(title, issue) {
     this.setState({ showModal: true, title, issue });
   }
   handleCloseModal() {
     this.setState({ showModal: false });
-  }
-  handleUpdateRow(updateIssue) {
-    const issues = this.state.issues.map((issue) => {
-      let _issue = issue;
-      if (_issue.seq === updateIssue.seq) {
-        _issue = updateIssue;
-      }
-      return _issue;
-    });
-    this.setState({ issues, showModal: false });
   }
   render() {
     return (
@@ -47,7 +36,7 @@ class App extends React.Component {
           title={this.state.title}
           issue={this.state.issue}
           onAddRow={this.props.actions.handleAddRow}
-          onUpdateRow={this.handleUpdateRow}
+          onUpdateRow={this.props.actions.handleUpdateRow}
         />
       </div>
     );
@@ -67,6 +56,7 @@ App.propTypes = {
   issues: React.PropTypes.arrayOf(React.PropTypes.object),
   actions: React.PropTypes.shape({
     handleDropRow: React.PropTypes.func,
-    handleAddRow: React.PropTypes.func
+    handleAddRow: React.PropTypes.func,
+    handleUpdateRow: React.PropTypes.func
   })
 };
