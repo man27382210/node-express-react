@@ -2,9 +2,9 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import TrackingTable from './table';
-import ModalDialog from './modal';
-import * as actions from './actions';
+import TrackingTable from '../components/table';
+import ModalDialog from '../components/modal';
+import * as actions from '../actions';
 
 class App extends React.Component {
   constructor(props) {

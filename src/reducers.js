@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import issueList from './constant';
-import * as types from './actionTypes';
+import issueList from './constants/constant';
+import * as types from './constants/actionTypes';
 
 const initialState = { issues: issueList };
 

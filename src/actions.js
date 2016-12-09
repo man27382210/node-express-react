@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import * as types from './constants/actionTypes';
 
 export const handleDropRow = seq => ({ type: types.DeleteRow, seq });
 export const handleAddRow = issue => ({ type: types.AddRow, issue });
