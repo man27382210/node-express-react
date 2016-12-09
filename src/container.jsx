@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import TrackingTable from './table';
 import issueList from './constant';
 import ModalDialog from './modal';
+import * as actions from './actions';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +16,6 @@ export default class App extends React.Component {
       title: 'New Issue',
       issue: {}
     };
-    this.handleDropRow = this.handleDropRow.bind(this);
     this.handleShowModal = this.handleShowModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleAddRow = this.handleAddRow.bind(this);
@@ -24,10 +26,6 @@ export default class App extends React.Component {
   }
   handleCloseModal() {
     this.setState({ showModal: false });
-  }
-  handleDropRow(seq) {
-    const issues = this.state.issues.filter(issue => issue.seq !== seq);
-    this.setState({ issues });
   }
   handleAddRow(issue) {
     const nextSeq = this.state.issues[Object.keys(this.state.issues).length - 1].seq + 1;
@@ -49,7 +47,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Button onClick={() => this.handleShowModal('New Issue', {})}>New</Button>
-        <TrackingTable issues={this.state.issues} showModal={this.handleShowModal} onDropRow={this.handleDropRow} />
+        <TrackingTable issues={this.props.issues} showModal={this.handleShowModal} onDropRow={this.props.actions.handleDropRow} />
         <ModalDialog
           show={this.state.showModal}
           onHide={this.handleCloseModal}
@@ -62,3 +60,19 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  issues: state.issues
+});
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  issues: React.PropTypes.arrayOf(React.PropTypes.object),
+  actions: React.PropTypes.shape({
+    handleDropRow: React.PropTypes.func
+  })
+};
