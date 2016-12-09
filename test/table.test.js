@@ -4,8 +4,8 @@ import chai from 'chai';
 import ReactTestUtils from 'react-addons-test-utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TrackingTable from '../src/table';
-import issues from '../src/constant';
+import TrackingTable from '../src/components/table';
+import issues from '../src/constants/constant';
 
 const expect = chai.expect;
 

@@ -4,7 +4,7 @@ import chai from 'chai';
 import ReactTestUtils from 'react-addons-test-utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../src/index';
+import App from '../src/containers/container';
 
 const expect = chai.expect;
 

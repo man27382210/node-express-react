@@ -5,7 +5,7 @@ import ReactTestUtils from 'react-addons-test-utils';
 import React from 'react';
 import sinon from 'sinon';
 import ReactDOM from 'react-dom';
-import IssueRow from '../src/row';
+import IssueRow from '../src/components/row';
 
 const expect = chai.expect;
 

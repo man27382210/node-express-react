@@ -4,7 +4,7 @@ import chai from 'chai';
 import ReactTestUtils from 'react-addons-test-utils';
 import React from 'react';
 import sinon from 'sinon';
-import ModalDialog from '../src/modal';
+import ModalDialog from '../src/components/modal';
 
 const expect = chai.expect;
 
