@@ -18,7 +18,6 @@ class App extends React.Component {
     };
     this.handleShowModal = this.handleShowModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleAddRow = this.handleAddRow.bind(this);
     this.handleUpdateRow = this.handleUpdateRow.bind(this);
   }
   handleShowModal(title, issue) {
@@ -26,12 +25,6 @@ class App extends React.Component {
   }
   handleCloseModal() {
     this.setState({ showModal: false });
-  }
-  handleAddRow(issue) {
-    const nextSeq = this.state.issues[Object.keys(this.state.issues).length - 1].seq + 1;
-    const issues = this.state.issues;
-    issues.push({ ...issue, seq: nextSeq });
-    this.setState({ issues, showModal: false });
   }
   handleUpdateRow(updateIssue) {
     const issues = this.state.issues.map((issue) => {
@@ -53,7 +46,7 @@ class App extends React.Component {
           onHide={this.handleCloseModal}
           title={this.state.title}
           issue={this.state.issue}
-          onAddRow={this.handleAddRow}
+          onAddRow={this.props.actions.handleAddRow}
           onUpdateRow={this.handleUpdateRow}
         />
       </div>
@@ -73,6 +66,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 App.propTypes = {
   issues: React.PropTypes.arrayOf(React.PropTypes.object),
   actions: React.PropTypes.shape({
-    handleDropRow: React.PropTypes.func
+    handleDropRow: React.PropTypes.func,
+    handleAddRow: React.PropTypes.func
   })
 };
