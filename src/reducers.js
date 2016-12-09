@@ -7,17 +7,24 @@ const initialState = { issues: issueList };
 const operation = (state = initialState, action) => {
   switch (action.type) {
     case types.DeleteRow:
-      return { ...state,
+      return {
+        ...state,
         issues: state.issues.filter(issue => issue.seq !== action.seq)
       };
     case types.AddRow:
-      return { ...state,
-        issues: [...state.issues,
-          { ...action.issue, seq: state.issues[Object.keys(state.issues).length - 1].seq + 1 }
+      return {
+        ...state,
+        issues: [
+          ...state.issues,
+          {
+            ...action.issue,
+            seq: state.issues[Object.keys(state.issues).length - 1].seq + 1
+          }
         ]
       };
     case types.UpdateRow:
-      return { ...state,
+      return {
+        ...state,
         issues: state.issues.map(issue =>
           issue.seq === action.issue.seq ?
             action.issue : issue) };
