@@ -5,7 +5,8 @@ import * as types from './constants/actionTypes';
 
 const initialData = { issues: issueList };
 
-const operation = (state = initialData, action) => {
+export const operation = (state = initialData, action) => {
+  let seq;
   switch (action.type) {
     case types.DeleteRow:
       return {
@@ -13,13 +14,15 @@ const operation = (state = initialData, action) => {
         issues: state.issues.filter(issue => issue.seq !== action.seq)
       };
     case types.AddRow:
+      seq = (Object.keys(state.issues).length > 0) ?
+      state.issues[Object.keys(state.issues).length - 1].seq + 1 : 1;
       return {
         ...state,
         issues: [
           ...state.issues,
           {
             ...action.issue,
-            seq: state.issues[Object.keys(state.issues).length - 1].seq + 1
+            seq: seq
           }
         ]
       };
@@ -36,7 +39,7 @@ const operation = (state = initialData, action) => {
 
 const initialState = { showModal: false, title: 'New Issue', issue: {} };
 
-const modalControl = (state = initialState, action) => {
+export const modalControl = (state = initialState, action) => {
   switch (action.type) {
     case types.ShowModal:
       return { ...state, showModal: true, title: action.title, issue: action.issue };
