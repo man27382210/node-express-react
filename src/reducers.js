@@ -1,13 +1,15 @@
 /* eslint no-confusing-arrow: 0 */
 import { combineReducers } from 'redux';
-import issueList from './constants/constant';
 import * as types from './constants/actionTypes';
 
-const initialData = { issues: issueList };
-
-export const operation = (state = initialData, action) => {
+export const operation = (state = {}, action) => {
   let seq;
   switch (action.type) {
+    case types.FetchSuccess:
+      return {
+        ...state,
+        issues: action.issues
+      };
     case types.DeleteRow:
       return {
         ...state,
@@ -31,7 +33,8 @@ export const operation = (state = initialData, action) => {
         ...state,
         issues: state.issues.map(issue =>
           issue.seq === action.issue.seq ?
-            action.issue : issue) };
+            action.issue : issue)
+      };
     default:
       return state;
   }

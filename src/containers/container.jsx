@@ -11,6 +11,9 @@ class App extends React.Component {
     super(props);
     this.handleShowNewModal = this.handleShowNewModal.bind(this);
   }
+  componentDidMount() {
+    this.props.actions.fetchData();
+  }
   handleShowNewModal() {
     this.props.actions.handleShowModal('New Issue', {});
   }
@@ -62,6 +65,7 @@ App.propTypes = {
     handleAddRow: React.PropTypes.func,
     handleUpdateRow: React.PropTypes.func,
     handleShowModal: React.PropTypes.func,
-    handleCloseModal: React.PropTypes.func
+    handleCloseModal: React.PropTypes.func,
+    fetchData: React.PropTypes.func
   })
 };
