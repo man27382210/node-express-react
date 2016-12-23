@@ -15,14 +15,17 @@ export default class TrackingTable extends React.Component {
     this.props.onDropRow(seq);
   }
   render() {
-    var issues = this.props.issues.map(issue => (
-      <IssueRow
-        key={issue.seq}
-        issue={issue}
-        showModal={this.showModal}
-        onDropRow={this.handleDropRow}
-      />
-    ));
+    var issues;
+    if (this.props.issues) {
+      issues = this.props.issues.map(issue => (
+        <IssueRow
+          key={issue.seq}
+          issue={issue}
+          showModal={this.showModal}
+          onDropRow={this.handleDropRow}
+        />
+      ));
+    }
     return (
       <Table responsive striped bordered condensed hover>
         <thead>
