@@ -23,6 +23,12 @@ app.post('/issues', function(req, res) {
   });
 });
 
+app.put('/issues/:issue_id', function(req, res) {
+  DB.findOneAndUpdate({ seq: req.params.issue_id }, req.body.issue, function() {
+    res.json(req.body.issue);
+  });
+});
+
 app.listen(3000, function() {
   console.log('application listening on port 3000!');
 });

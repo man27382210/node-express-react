@@ -32,3 +32,19 @@ export const addRow = issue => (
     ))
   )
 );
+export const updateRow = issue => (
+  dispatch => (
+    fetch('http://localhost:3000/issues/' + issue.seq, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ issue })
+    })
+    .then(res => (
+      res.json().then(
+        data => (dispatch(handleUpdateRow(data)))
+      )
+    ))
+  )
+);

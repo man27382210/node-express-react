@@ -28,7 +28,7 @@ class App extends React.Component {
           title={this.props.title}
           issue={this.props.issue}
           onAddRow={this.props.actions.addRow}
-          onUpdateRow={this.props.actions.handleUpdateRow}
+          onUpdateRow={this.props.actions.updateRow}
         />
       </div>
     );
@@ -62,11 +62,10 @@ App.propTypes = {
   }),
   actions: React.PropTypes.shape({
     handleDropRow: React.PropTypes.func,
-    handleAddRow: React.PropTypes.func,
-    handleUpdateRow: React.PropTypes.func,
     handleShowModal: React.PropTypes.func,
     handleCloseModal: React.PropTypes.func,
     fetchData: React.PropTypes.func,
-    addRow: React.PropTypes.func
+    addRow: React.PropTypes.func,
+    updateRow: React.PropTypes.func
   })
 };
