@@ -7,7 +7,7 @@ var app = express();
 app.use(express.static(__dirname));
 
 app.get('/issues', function(req, res) {
-  DB.find({}, function(err, docs) {
+  DB.find({ timeStamp: null }, function(err, docs) {
     if (err) console.log(err);
     res.json(docs);
   });
@@ -30,7 +30,7 @@ app.put('/issues/:issue_id', function(req, res) {
 });
 
 app.delete('/issues/:issue_id', function(req, res) {
-  DB.findOneAndRemove({ seq: req.params.issue_id }, function(err, doc) {
+  DB.findOneAndUpdate({ seq: req.params.issue_id }, { timeStamp: new Date() }, function(err, doc) {
     console.log('delete: ', doc.seq);
     res.json(doc.seq);
   });

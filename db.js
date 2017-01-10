@@ -22,7 +22,8 @@ const Issue = new Schema({
   title: String,
   owner: String,
   priority: String,
-  isUpdate: Boolean
+  isUpdate: Boolean,
+  timeStamp: Date
 });
 
 Issue.pre('save', function(next) {
