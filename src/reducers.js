@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 import * as types from './constants/actionTypes';
 
 export const operation = (state = {}, action) => {
-  let seq;
   switch (action.type) {
     case types.FetchSuccess:
       return {
@@ -16,15 +15,12 @@ export const operation = (state = {}, action) => {
         issues: state.issues.filter(issue => issue.seq !== action.seq)
       };
     case types.AddRow:
-      seq = (Object.keys(state.issues).length > 0) ?
-      state.issues[Object.keys(state.issues).length - 1].seq + 1 : 1;
       return {
         ...state,
         issues: [
           ...state.issues,
           {
-            ...action.issue,
-            seq: seq
+            ...action.issue
           }
         ]
       };
