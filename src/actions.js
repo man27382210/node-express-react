@@ -16,3 +16,19 @@ export const fetchData = () => (
     ))
   )
 );
+export const addRow = issue => (
+  dispatch => (
+    fetch('http://localhost:3000/issues', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ issue })
+    })
+    .then(res => (
+      res.json().then(
+        data => (dispatch(handleAddRow(data)))
+      )
+    ))
+  )
+);

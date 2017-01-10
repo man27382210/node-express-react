@@ -27,7 +27,7 @@ class App extends React.Component {
           onHide={this.props.actions.handleCloseModal}
           title={this.props.title}
           issue={this.props.issue}
-          onAddRow={this.props.actions.handleAddRow}
+          onAddRow={this.props.actions.addRow}
           onUpdateRow={this.props.actions.handleUpdateRow}
         />
       </div>
@@ -66,6 +66,7 @@ App.propTypes = {
     handleUpdateRow: React.PropTypes.func,
     handleShowModal: React.PropTypes.func,
     handleCloseModal: React.PropTypes.func,
-    fetchData: React.PropTypes.func
+    fetchData: React.PropTypes.func,
+    addRow: React.PropTypes.func
   })
 };
