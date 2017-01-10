@@ -29,6 +29,13 @@ app.put('/issues/:issue_id', function(req, res) {
   });
 });
 
+app.delete('/issues/:issue_id', function(req, res) {
+  DB.findOneAndRemove({ seq: req.params.issue_id }, function(err, doc) {
+    console.log('delete: ', doc.seq);
+    res.json(doc.seq);
+  });
+});
+
 app.listen(3000, function() {
   console.log('application listening on port 3000!');
 });

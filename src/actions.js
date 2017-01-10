@@ -48,3 +48,18 @@ export const updateRow = issue => (
     ))
   )
 );
+export const dropRow = seq => (
+  dispatch => (
+    fetch('http://localhost:3000/issues/' + seq, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => (
+      res.json().then(
+        data => (dispatch(handleDropRow(data)))
+      )
+    ))
+  )
+);

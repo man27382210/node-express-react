@@ -21,7 +21,7 @@ class App extends React.Component {
     return (
       <div>
         <Button onClick={() => this.handleShowNewModal()}>New</Button>
-        <TrackingTable issues={this.props.issues} showModal={this.props.actions.handleShowModal} onDropRow={this.props.actions.handleDropRow} />
+        <TrackingTable issues={this.props.issues} showModal={this.props.actions.handleShowModal} onDropRow={this.props.actions.dropRow} />
         <ModalDialog
           show={this.props.showModal}
           onHide={this.props.actions.handleCloseModal}
@@ -61,7 +61,7 @@ App.propTypes = {
     isUpdate: React.PropTypes.bool
   }),
   actions: React.PropTypes.shape({
-    handleDropRow: React.PropTypes.func,
+    dropRow: React.PropTypes.func,
     handleShowModal: React.PropTypes.func,
     handleCloseModal: React.PropTypes.func,
     fetchData: React.PropTypes.func,
