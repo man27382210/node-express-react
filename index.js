@@ -1,9 +1,10 @@
-var express = require('express');
-var DB = require('./db').IssueModel;
-var bodyParser = require('body-parser');
+const express = require('express');
+const DB = require('./db').IssueModel;
+const bodyParser = require('body-parser');
 
-var app = express();
+const app = express();
 
+app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
 app.get('/issues', function(req, res) {
@@ -13,10 +14,9 @@ app.get('/issues', function(req, res) {
   });
 });
 
-app.use(bodyParser.json());
 
 app.post('/issues', function(req, res) {
-  var issue = new DB(req.body.issue);
+  const issue = new DB(req.body.issue);
   issue.save(issue, function(err, docs) {
     if (err) console.log(err);
     res.json(docs);

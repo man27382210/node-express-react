@@ -15,7 +15,7 @@ export default class TrackingTable extends React.Component {
     this.props.onDropRow(seq);
   }
   render() {
-    var issues;
+    let issues;
     if (this.props.issues) {
       issues = this.props.issues.map(issue => (
         <IssueRow
