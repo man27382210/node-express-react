@@ -1,5 +1,6 @@
 import * as types from './constants/actionTypes';
 
+const fetchUrl = 'http://localhost:3000/issues/';
 export const handleDropRow = seq => ({ type: types.DeleteRow, seq });
 export const handleAddRow = issue => ({ type: types.AddRow, issue });
 export const handleUpdateRow = issue => ({ type: types.UpdateRow, issue });
@@ -8,7 +9,7 @@ export const handleCloseModal = () => ({ type: types.CloseModal });
 export const fetchDataSuccess = issues => ({ type: types.FetchSuccess, issues });
 export const fetchData = () => (
   dispatch => (
-    fetch('http://localhost:3000/issues')
+    fetch(fetchUrl)
     .then(res => (
       res.json().then(
         data => (dispatch(fetchDataSuccess(data)))
@@ -18,7 +19,7 @@ export const fetchData = () => (
 );
 export const addRow = issue => (
   dispatch => (
-    fetch('http://localhost:3000/issues', {
+    fetch(fetchUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,7 +35,7 @@ export const addRow = issue => (
 );
 export const updateRow = issue => (
   dispatch => (
-    fetch('http://localhost:3000/issues/' + issue.seq, {
+    fetch(fetchUrl + issue.seq, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -50,7 +51,7 @@ export const updateRow = issue => (
 );
 export const dropRow = seq => (
   dispatch => (
-    fetch('http://localhost:3000/issues/' + seq, {
+    fetch(fetchUrl + seq, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
