@@ -1,6 +1,7 @@
 import * as types from './constants/actionTypes';
+import { ProductionApiUri } from './constants/uri';
 
-const fetchUrl = 'http://localhost:3000/issues/';
+const fetchUrl = ProductionApiUri;
 export const handleDropRow = seq => ({ type: types.DeleteRow, seq });
 export const handleAddRow = issue => ({ type: types.AddRow, issue });
 export const handleUpdateRow = issue => ({ type: types.UpdateRow, issue });
