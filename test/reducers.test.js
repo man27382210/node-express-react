@@ -2,14 +2,16 @@
 import chai from 'chai';
 import * as types from '../src/constants/ActionTypes';
 import { operation, modalControl } from '../src/reducers';
-import issueList from '../src/constants/constant';
 
 const expect = chai.expect;
 
 describe('reducers', () => {
   describe('operation', () => {
     it('should handle initial state', () => {
-      expect(operation(undefined, {})).to.eql({ issues: issueList });
+      expect(operation(undefined, {})).to.eql({});
+    });
+    it('should handle fetch data success', () => {
+      expect(operation({}, { type: types.FetchSuccess, issues: [] })).to.eql({ issues: [] });
     });
     it('should handle DeleteRow', () => {
       const state = {
@@ -19,8 +21,8 @@ describe('reducers', () => {
       expect(operation(state, { type: types.DeleteRow, seq: 1 })).to.eql({ issues: [] });
     });
     it('should handle AddRow', () => {
-      const issue = { status: 'Close', category: 'cat2', title: 'title3', owner: 'Allen', priority: 'P3', isUpdate: false };
-      expect(operation({ issues: [] }, { type: types.AddRow, issue })).to.eql({ issues: [{ ...issue, seq: 1 }] });
+      const issue = { seq: 1, status: 'Close', category: 'cat2', title: 'title3', owner: 'Allen', priority: 'P3', isUpdate: false };
+      expect(operation({ issues: [] }, { type: types.AddRow, issue })).to.eql({ issues: [issue] });
     });
     it('should handle UpdateRow', () => {
       const state = {
