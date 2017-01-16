@@ -7,8 +7,9 @@
     "start": "browserify src/index.jsx --extension=.jsx -o bundle.js -t babelify && node index.js",
     "test": "mocha --compilers js:babel-register --require test/utils/setup.js",
     "lint": "eslint .",
-    "dev": "webpack-dev-server -d --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch",
-    "gitUser": "git config user.name 'Rebecca' && git config user.email 'joanna8030@gmail.com'"
+    "dev": "node index.js && webpack-dev-server -d --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch",
+    "gitUser": "git config user.name 'Rebecca' && git config user.email 'joanna8030@gmail.com'",
+    "run-docker": "sh run-docker.sh"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
