@@ -23,9 +23,9 @@ app.post('/issues', function(req, res) {
 });
 
 app.put('/issues/:issue_id', function(req, res) {
-  DB.findOneAndUpdate({ seq: req.params.issue_id }, req.body.issue, function(err) {
+  DB.findOneAndUpdate({ seq: req.params.issue_id }, req.body.issue, { new: true }, function(err, doc) {
     if (err) res.json({});
-    res.json(req.body.issue);
+    res.json(doc);
   });
 });
 
