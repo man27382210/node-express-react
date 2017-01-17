@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "browserify src/index.jsx --extension=.jsx -o bundle.js -t babelify && node index.js",
-    "test": "mocha --compilers js:babel-register --require test/utils/setup.js",
+    "start": "export NODE_ENV=production && browserify src/index.jsx --extension=.jsx -o bundle.js -t babelify && node index.js",
+    "test": "export NODE_ENV=development && mocha --compilers js:babel-register --require test/utils/setup.js",
     "lint": "eslint .",
-    "dev": "node index.js && webpack-dev-server -d --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch",
+    "dev": "export NODE_ENV=development && node index.js && webpack-dev-server -d --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch",
     "gitUser": "git config user.name 'Rebecca' && git config user.email 'joanna8030@gmail.com'",
     "run-docker": "sh run-docker.sh"
   },

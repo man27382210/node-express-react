@@ -1,8 +1,10 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 const mongoose = require('mongoose');
 const ProductionDBUri = require('./src/constants/uri').ProductionDBUri;
+const TestDBUri = require('./src/constants/uri').TestDBUri;
 
-mongoose.connect(ProductionDBUri);
+const dbUri = process.env.NODE_ENV === 'production' ? ProductionDBUri : TestDBUri;
+mongoose.connect(dbUri);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() { console.log('connect'); });
