@@ -36,6 +36,7 @@
     "mongoose": "^4.7.2",
     "react-addons-test-utils": "^15.4.1",
     "react-hot-loader": "^1.3.0",
+    "redux-mock-store": "^1.2.1",
     "sinon": "^1.17.6",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
@@ -43,6 +44,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
